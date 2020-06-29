@@ -1,6 +1,6 @@
 # MpptToMqtt
 ## Description
-This script sends the data from the SRNE **SR-MT2410** solar charge controller to an MQTT server. I only tested this with this device, but maybe it also works for other charge controllers.
+This script sends the data from the **SRNE SR-MT2410** solar charge controller to an MQTT server. I only tested this with this device, but maybe it also works for other charge controllers.
 ![SRNE SR-MT2410](/images/SRNE-SR-MT2410.jpg)
 ## Requirements
 
@@ -31,9 +31,9 @@ All configuration values can be found in the **MpptToMqttConfig.py**:
 ### Subscribable topics
 | Topic | Description |
 |--|--|
-|/controllername/Led| Solarpanel LED 0 off, 1 and 2 on, 3 blink |
+|/controllername/Led| Solarpanel led<br>**Bit 8**: led on<br>**Bit 8 & Bit 7**: blink fast<br>**Bit 8 & Bit 6**: blink slow |
 |/controllername/ErrorCode| Error code |
-|/controllername/Icons| Icons: 1 = lamp symbol, 2 and 3 = battery blink, 4+ battery blink fast |
+|/controllername/Icons| **Bit 8**: Lamp symbol<br>**Bit 7**: Battery led blink slow<br>**Bit 6**: Battery led blink fast |
 |/controllername/BatteryVoltage| Battery voltage |
 |/controllername/PvVoltage| PV voltage |
 |/controllername/ChargeCurrentAmpere| Current charge in ampere |

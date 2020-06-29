@@ -108,9 +108,9 @@ def QueryValues():
             calculatedChecksum = calculateModulo(data)
 
             if responseChecksum == calculatedChecksum:
-                led = data[6] # Solarpanel LED 0x00 off, 0x01 und 0x02 on, 0x03 blink
+                led = data[6] # Solarpanel led: bit 8 = on, bit 8 & bit 7 blink fast, bit 8 & bit 6 blink slow
                 errorCode = data[8] # Error code
-                icons = data[10] # Icons: 1 = lamp symbol, 2 and 3 = battery blink, 4+ battery blink fast
+                icons = data[10] # bit 8: lamp symbol, bit 7: battery blink slow, bit 6: battery blink fast
                 batteryVoltage = data[11] * 2.368 # Battery voltage (max 42) multiplied with 2.368
                 batteryVoltage += data[12] * 0.00925 # Battery voltage int value multiplied with 0.00925
                 pvVoltage = data[13] * 9.45 # PV voltage (max 105) multiplied with 9.45
